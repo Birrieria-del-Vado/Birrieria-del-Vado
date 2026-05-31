@@ -193,6 +193,11 @@
 
   <div class="divider"></div>
 
+
+  <div class="hora" style="z-index:2; text-align:center; margin-bottom:10px;">
+    <div style="font-size:10px; letter-spacing:5px; color:#C9A84C; font-family:Cinzel,serif;">H O R A</div>
+    <div style="font-family:Georgia,serif; font-size:36px; font-weight:bold; color:#F5EDD8; letter-spacing:4px;">6:00 PM</div>
+  </div>
   <div class="direccion">
     <div class="icono">📍</div>
     <div class="calle">Calle Ocampo, Colonia Centro</div>
@@ -220,6 +225,60 @@
       Síguenos en Facebook
     </a>
   </div>
+
+  <div id="countdown" style="z-index:2; text-align:center; margin-top:18px;">
+    <div style="font-size:9px; letter-spacing:5px; color:#8B6914; font-family:Cinzel,serif; margin-bottom:8px;">FALTAN</div>
+    <div style="display:flex; justify-content:center; gap:12px;">
+      <div style="text-align:center;">
+        <div id="days" style="font-family:Georgia,serif; font-size:32px; font-weight:bold; color:#C9A84C; min-width:52px; display:block;">00</div>
+        <div style="font-size:8px; letter-spacing:3px; color:#8B6914; font-family:Cinzel,serif;">DÍAS</div>
+      </div>
+      <div style="font-family:Georgia,serif; font-size:32px; color:#8B6914; line-height:1.2;">:</div>
+      <div style="text-align:center;">
+        <div id="hours" style="font-family:Georgia,serif; font-size:32px; font-weight:bold; color:#C9A84C; min-width:52px; display:block;">00</div>
+        <div style="font-size:8px; letter-spacing:3px; color:#8B6914; font-family:Cinzel,serif;">HRS</div>
+      </div>
+      <div style="font-family:Georgia,serif; font-size:32px; color:#8B6914; line-height:1.2;">:</div>
+      <div style="text-align:center;">
+        <div id="mins" style="font-family:Georgia,serif; font-size:32px; font-weight:bold; color:#C9A84C; min-width:52px; display:block;">00</div>
+        <div style="font-size:8px; letter-spacing:3px; color:#8B6914; font-family:Cinzel,serif;">MIN</div>
+      </div>
+      <div style="font-family:Georgia,serif; font-size:32px; color:#8B6914; line-height:1.2;">:</div>
+      <div style="text-align:center;">
+        <div id="secs" style="font-family:Georgia,serif; font-size:32px; font-weight:bold; color:#E8C97A; min-width:52px; display:block;">00</div>
+        <div style="font-size:8px; letter-spacing:3px; color:#8B6914; font-family:Cinzel,serif;">SEG</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function countdown() {
+      // Sabado 7 junio 2026 18:00 hora Chihuahua (UTC-6)
+      var target = new Date('2026-06-06T18:00:00-06:00');
+      function update() {
+        var now = new Date();
+        var diff = target - now;
+        if (diff <= 0) {
+          document.getElementById('days').textContent = '00';
+          document.getElementById('hours').textContent = '00';
+          document.getElementById('mins').textContent = '00';
+          document.getElementById('secs').textContent = '00';
+          return;
+        }
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('days').textContent  = String(d).padStart(2,'0');
+        document.getElementById('hours').textContent = String(h).padStart(2,'0');
+        document.getElementById('mins').textContent  = String(m).padStart(2,'0');
+        document.getElementById('secs').textContent  = String(s).padStart(2,'0');
+      }
+      update();
+      setInterval(update, 1000);
+    }
+    countdown();
+  </script>
   <div class="footer-rule"><span></span><em>¡TE ESPERAMOS!</em><span></span></div>
   <div class="tagline">Sabor auténtico · Birria hecha con pasión</div>
 </div>
